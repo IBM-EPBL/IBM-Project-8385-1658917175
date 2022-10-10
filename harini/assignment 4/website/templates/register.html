@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% extends "base.html%}
+{% block registration %}
+<div id="container">
+    <header>Register new account</header>
+    <form method="post">
+       <fieldset>
+          <br/>
+          <input type="text" name="username" id="username" placeholder="Username" required autofocus>
+          <br/><br/>
+          <input type="email" name="email" id="email" placeholder="E-mail" required>
+          <br/><br/>
+          <input type="number" name="Roll number" id="Roll number" placeholder="Roll number" required>
+          <br/><br/>
+          <input type="text" name="Password" id="Password" placeholder="Password" required>
+          <br/><br/><br/>
+          <label for="submit"></label>
+          <input type="submit" name="submit" id="submit" value="SUBMIT">
+       </fieldset>
+    </form>
+ </div>
+ {% endblock %}
