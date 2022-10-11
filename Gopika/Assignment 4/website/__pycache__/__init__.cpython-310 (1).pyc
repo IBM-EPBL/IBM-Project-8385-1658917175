@@ -1,0 +1,3 @@
+o
+    «r/cW   ã                   @   s   d dl mZ dd„ ZdS )é    )ÚFlaskc                  C   s   t tƒ} | S )N)r   Ú__name__)Úapp© r   úHd:\IBM_Cloud\Gopika\Assignment 4\website\__init__.pyÚ
+create_app   s   r    N)Úflaskr   r    r   r   r   r   Ú<module>   s    

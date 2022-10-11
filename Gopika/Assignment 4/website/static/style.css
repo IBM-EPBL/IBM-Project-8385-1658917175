@@ -1,0 +1,78 @@
+html { 
+    height: 150%;
+    width: 150%;
+}
+    header {
+                padding: 5px 120px;
+                width: 150px;
+                height: 70px;
+                background-color: #236B8E;
+            }
+         
+    border {
+                padding: 80px 50px;
+                width: 400px;
+                height: 450px;
+                border: 1px solid #236B8E;
+                border-radius: 0px;
+                background-color: rgba;
+            }
+ 
+     nav {
+                z-index: 999;
+                background-color: white;
+                padding: 5px 10px;
+                color: teal;
+                font-size: 20px;
+            }
+ 
+     textbox {
+                padding: 10px 40px;
+                background-color: #236B8E;
+                text-color: #FFFFFF;
+                border-radius: 10px;
+            }
+     
+     input[type="submit"] {
+                background: rgba(235, 30, 54, 1);
+                display: block;
+                width: 70%;
+                margin: 0 auto;
+                color: white;
+                padding: 0.7rem;
+                cursor: pointer;
+            }
+
+     input {
+                background: transparent;
+                border-left: 4px solid;
+                border-color: #FF0000;
+                padding: 10px;
+                color: white;
+            }
+
+     input[type="text"]:focus,
+     input[type="email"]:focus,
+     input[type="password"]:focus, 
+     input[type="rollnumber"]:focus {
+     outline: 0;
+     background: rgba(235, 30, 54, 0.3);
+     border-radius: 1.2rem;
+     border-color: transparent;
+     }
+
+                 
+    :: placeholder {
+                color: #FFFFFF;
+                opacity: 1;
+                font-style: oblique;
+                font-weight: bold;
+            }
+ 
+             
+            bottom {
+                color: #236B8E;
+                font-style: oblique;
+                font-weight: bold;
+            }
+ 
