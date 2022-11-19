@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+
+{% block profile %}
+<div class="log-sign" style="--i: 1.8s">
+    <a href="#" class="btn1 transparent" style="font-weight: bold;" title={{user}}>Profile</a>
+    <a href="/logout" class="btn1 solid" style="font-weight: bold;">Logout</a>
+</div>
+{% endblock %}
+
+{% block indexcontent %}
+
+<style>
+    #center {
+        text-align: center;
+    }
+    #notfound {
+        width: 200px;
+        height: 300px;
+    }
+    #edate {
+        padding: 2px 5px;
+        border: 1px solid gray;
+        border-radius: 5px;
+    }
+    #ename {
+        padding: 2px 5px;
+    }
+    #eamount {
+        padding: 2px 5px;
+        color: red;
+    }
+    #epaymode {
+        background-color: teal;
+        padding: 2px 5px;
+        outline: none;
+        border-radius: 5px;
+        color: white;
+    }
+    #ecategory {
+        background-color: rgb(0, 171, 223);
+        padding: 2px 5px;
+        outline: none;
+        border-radius: 5px;
+        color: white;
+    }
+    #edit a i {
+        color: green;
+        cursor: pointer;
+    }
+    #edit a, #delete a {
+        text-decoration: none;
+    }
+    #delete a i {
+        color: red;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container">
+    <h3 class="mt-3">EXPENSES</h3>
+    {% if expense is defined %}
+    <div class="table-responsive text-nowrap">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Paymode</th>
+                    <th>Category</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in expense  %}
+                <tr>
+                    <td><span id="edate">{{row[2]}}</span></td>
+                    <td><span id="ename">{{row[3]}}</span></td>
+                    <td> ₹<span id="eamount"> {{row[4]}}</span></td>
+                    <td><span id="epaymode">{{row[5]}}</span></td>
+                    <td><span id="ecategory">{{row[6]}}</span></td>
+                    <td><span id="edit" title="Edit"><a href="/edit/{{row[0]}}"><i class="fa fa-pen"></i></a></span></td>
+                    <td><span id="delete" title="Delete"><a href="/delete/{{row[0]}}"><i class="fa fa-trash"></i></a></span></td>
+                </tr>
+                {% else %}
+                <!-- <tr>
+                    <td colspan="6" style="text-align: center;">Nothing to display</td>
+                </tr> -->
+            </tbody>
+        </table>
+        <div id="center"><img src="../static/images/not-found.png" id="notfound"></div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="mt-5">Expense Breakdown</h3>
+            <div class="card shadow mb-2 bg-white rounded-bottom">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-md-6">Food</div>
+                        <div id="tfood" class="col-md-6">{{sfood}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-2 bg-white rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">Entertainment</div>
+                        <div id="tentertainment" class="col-md-6">{{sentertainment}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-2 bg-white rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">Business</div>
+                        <div id="tbusiness" class="col-md-6">{{sbusiness}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-2 bg-white rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div  class="col-md-6">Rent</div>
+                        <div id="trent" class="col-md-6">{{srent}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-2 bg-white rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">EMI</div>
+                        <div id="temi" class="col-md-6">{{semi}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-2 bg-white rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">Other</div>
+                        <div id="tother" class="col-md-6">{{sother}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-2 btn-outline-danger rounded-pill">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6" style="color: red;">Total</div>
+                        <div class="col-md-6" style="color: red;">₹ {{stotal}}  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div id='expensechart'></div>
+
+</div>
+
+<!-- <div id='expensechart'></div> -->
+
+<script>
+    let food = document.getElementById('tfood').innerHTML
+    let entertainment = document.getElementById('tentertainment').innerHTML
+    let business = document.getElementById('tbusiness').innerHTML
+    let rent = document.getElementById('trent').innerHTML
+    let emi = document.getElementById('temi').innerHTML
+    let other = document.getElementById('tother').innerHTML
+    if (food == 'None'){
+        food = 0
+    }
+    if (entertainment == 'None'){
+        entertainment = 0
+    }
+    if (business == 'None'){
+        business = 0
+    }
+    if (rent == 'None'){
+        rent = 0
+    }
+    if (emi == 'None'){
+        emi = 0
+    }
+    if (other == 'None'){
+        other = 0
+    }
+    var data = [{
+        type: "pie",
+        values: [food, entertainment, business, rent, emi, other],
+        labels: ['Food', 'Entertainment', 'Business', 'Rent', 'EMI', 'Other'],
+        textinfo: "label+percent",
+        insidetextorientation: "radial"
+    }]
+    var layout = [{
+        height: 700,
+        width: 700
+    }]
+    Plotly.newPlot('expensechart', data, layout)
+</script>
+
+{% endblock %}
