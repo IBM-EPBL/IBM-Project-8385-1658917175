@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block profile %}
+<div class="log-sign" style="--i: 1.8s">
+    <!-- <a href="#" class="btn transparent" style="font-weight: bold;">{{user}}</a> -->
+    <a href="#" class="btn1 transparent" style="font-weight: bold;" title={{user}}>Profile</a>
+    <a href="/logout" class="btn1 solid" style="font-weight: bold;">Logout</a>
+</div>
+{% endblock %}
+
+{% block indexcontent %} 
+<style>
+    section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .content {
+        max-width: 700px;
+        margin: auto;
+        height: 50vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+    .a {
+        padding: 10px 20px;
+        border-radius: 20px;
+        outline: none;
+        text-decoration: none;
+        border: 1px solid transparent;
+        cursor: pointer;
+        font-weight: bold;
+        background-color: teal;
+        color: white;
+        text-transform: uppercase;
+    }
+    .a:hover {
+        color: white;
+    }
+</style>
+<section>
+    <div class="content">
+        <h1 style="color: teal;">LET START JOURNEY</h1><br>
+        <p>ExpenseTracker web application helps you to maintain budget and analyse the expense</p><br>
+        <a href="/display" class="a">Explore</a>
+    </div>
+</section>
+{% endblock %}
