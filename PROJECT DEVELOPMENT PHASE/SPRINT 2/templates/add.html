@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block profile %}
+<div class="log-sign" style="--i: 1.8s">
+    <!-- <a href="#" class="btn transparent" style="font-weight: bold;">{{user}}</a> -->
+    <a href="#" class="btn1 transparent" style="font-weight: bold;" title={{user}}>Profile</a>
+    <a href="/logout" class="btn1 solid" style="font-weight: bold;">Logout</a>
+</div>
+{% endblock %}
+
+
+{% block indexcontent %}
+
+<style>
+    .row {
+        position: relative;
+        /* height: 100vh;
+        width: 100vw; */
+        background: url('../static//images/addd.jpg');
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+    .form {
+        /* position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); */
+        width: 50%;
+        margin-top: 50px;
+    }
+    .form h3 {
+        color: teal;
+        margin-bottom: 20px;
+        font-size: 30px;
+        text-decoration: underline;
+    }
+    /* .form-group {
+        padding: 10px 0px;
+    }
+    .form-group label, .form-group input, .form-group select {
+        padding: 5px 10px;
+    } */
+    #submit {
+        border-radius: 5px;
+        margin-top: 10px;
+        cursor: pointer;
+        padding: 5px 20px;
+        outline: none;
+        font-weight: bold;
+        border: 2px solid transparent;
+        background-color: teal;
+        color: white;
+        transition: all .3s;
+    }
+    #submit:hover {
+        color: teal;
+        border: 2px solid teal;
+        background-color: white;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="form">
+            <h3>Add Expense</h3>
+            <form action="/addexpense" method="POST">
+                <div class="form-group">
+                     <label for="">Date</label> 
+                     <input class="form-control" type="datetime-local" name="date" id="date" required>
+                </div>
+                <div class="form-group"> <label for="">Expense name</label>
+                    <input class="form-control" type="text" name="expensename" id="expensename" required>
+                </div>
+                <div class="form-group">
+                     <label for="">Expense Amount</label> 
+                      <input class="form-control"  type="number" min="0" name="amount" id="amount" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Pay-Mode</label> 
+                    <select class="form-control" name="paymode" id="paymode" required>
+                        <option  selected hidden>--SELECT--</option>
+                        <option name="cash" value="Cash">Cash</option>
+                        <option name="debitcard" value="Debitcard">Debitcard</option>
+                        <option name="creditcard" value="Creditcard">Creditcard</option>
+                        <option name="epayment" value="E-Payment">E-Payment</option>
+                        <option name="onlinebanking" value="Online Banking">Online Banking</option>
+                    </select>
+                </div>
+                 <div class="form-group">
+                    <label for="">Category</label>
+                    <select class="form-control" name="category" id="category" required>
+                        <option selected hidden>--SELECT--</option>
+                        <option   name = "food" value="Food">Food</option>
+                        <option name = "entertainment" value="Entertainment">Entertainment</option>
+                        <option name = "business" value="Business">Business</option>
+                        <option name = "rent" value="Rent">Rent</option>
+                        <option name = "EMI" value="EMI">EMI</option>
+                        <option name = "other" value="Other">Other</option>
+                    </select>
+                </div>
+                <input type="submit" value="Add" id="submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
