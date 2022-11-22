@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block profile %}
+<div class="log-sign" style="--i: 1.8s">
+    <!-- <a href="#" class="btn transparent" style="font-weight: bold;">{{user}}</a> -->
+    <a href="#" class="btn1 transparent" style="font-weight: bold;" title={{user}}>Profile</a>
+    <a href="/logout" class="btn1 solid" style="font-weight: bold;">Logout</a>
+</div>
+{% endblock %}
+
+{% block indexcontent %} 
+<style>
+    form label {
+        font-weight: bold;
+    }
+    form input {
+        padding: 5px 10px;
+        margin: 10px;
+    }
+    form button {
+        background-color: teal;
+        border: 2px solid teal;
+        color: white;
+        padding: 3px 10px;
+        outline: none;
+        border-radius: 5px;
+        transition: all 0.3s;
+        cursor: pointer;
+        margin: 10px;
+    }
+    form button:hover {
+        background-color: white;
+        color: teal;
+    }
+    #limitnum {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+<div class="container" style="margin-top: 20px;">
+    <p> Currently your MONTHLY limit is <span id="limitnum">₹ {{y}}</span></p>
+    <form action="/limitnum" method="POST">
+        <p> ENTER the MONTHLY LIMIT to avoid over EXPENSES</p> <br/>
+        <label>Input Limit </label><br>
+        <input type="number" min="0" name="number" placeholder="Limit" required/>
+        <button type="submit">ENTER</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block profile %}
+<div class="log-sign" style="--i: 1.8s">
+    <a href="#" class="btn1 transparent" style="font-weight: bold;" title={{user}}>Profile</a>
+    <a href="/logout" class="btn1 solid" style="font-weight: bold;">Logout</a>
+</div>
+{% endblock %}
+
+{% block indexcontent %}
+
+<div class="container ">
+                                                                                              
+
+    <div class="row">
+        <div class="col-md-5">
+            <h3 class="mt-5">Yearly Expense Breakdown</h3>
+            
+    
+    
+            <div class="card shadow mb-2 bg-white rounded-pill">
+                <div class="card-body ">
+                <div class="row">
+                    <div class="col-md-6">MONTH</div>
+                    <div class="col-md-6">  AMOUNT   </div>
+                 </div>
+                </div>
+            </div>
+            {% for row in texpense %}  
+            
+            <div class="card shadow mb-2 bg-white rounded-bottom">
+                <div class="card-body ">
+                <div class="row">
+                    <div id ="ttime" class="col-md-6">{{row [0]}}</div>
+                    <div id="tamount" class="col-md-6">   {{row[1] }}   </div>
+                 </div>
+                </div>
+            </div>
+                    
+         
+         {% endfor %}
+    </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="mt-5">Expense Breakdown</h3>
+            <div class="card shadow mb-2 bg-white rounded-bottom">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-md-6">Food</div>
+                        <div id="tfood" class="col-md-6">{{t_food}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-2 bg-white rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">Entertainment</div>
+                        <div id="tentertainment" class="col-md-6">{{t_entertainment}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-2 bg-white rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">Business</div>
+                        <div id="tbusiness" class="col-md-6">{{t_business}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-2 bg-white rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div  class="col-md-6">Rent</div>
+                        <div id="trent" class="col-md-6">{{t_rent}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-2 bg-white rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">EMI</div>
+                        <div id="temi" class="col-md-6">{{t_EMI}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-2 bg-white rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">Other</div>
+                        <div id="tother" class="col-md-6">{{t_other}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow mb-2 btn-outline-danger rounded-pill">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6" style="color: red;">Total</div>
+                        <div class="col-md-6" style="color: red;">₹ {{total}}  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div id='expensechart'></div>
+
+</div>
+
+<!-- <div id='expensechart'></div> -->
+
+<script>
+    let food = document.getElementById('tfood').innerHTML
+    let entertainment = document.getElementById('tentertainment').innerHTML
+    let business = document.getElementById('tbusiness').innerHTML
+    let rent = document.getElementById('trent').innerHTML
+    let emi = document.getElementById('temi').innerHTML
+    let other = document.getElementById('tother').innerHTML
+    // if (food == 'None'){
+    //     food = 0
+    // }
+    // if (entertainment == 'None'){
+    //     entertainment = 0
+    // }
+    // if (business == 'None'){
+    //     business = 0
+    // }
+    // if (rent == 'None'){
+    //     rent = 0
+    // }
+    // if (emi == 'None'){
+    //     emi = 0
+    // }
+    // if (other == 'None'){
+    //     other = 0
+    // }
+    var data = [{
+        type: "pie",
+        values: [food, entertainment, business, rent, emi, other],
+        labels: ['Food', 'Entertainment', 'Business', 'Rent', 'EMI', 'Other'],
+        textinfo: "label+percent",
+        insidetextorientation: "radial"
+    }]
+    var layout = [{
+        height: 700,
+        width: 700
+    }]
+    Plotly.newPlot('expensechart', data, layout)
+</script>
+
+{% endblock %}
